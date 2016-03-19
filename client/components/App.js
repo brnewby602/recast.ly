@@ -4,6 +4,12 @@ class App extends React.Component {
     super(props); 
   }
 
+  getInitialState() {
+    return {
+      video: this.props.videoList[0]
+    };
+  }
+
   render() {
     return (
       <div>
