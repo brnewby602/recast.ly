@@ -22,7 +22,7 @@ class VideoListEntry extends React.Component {
   }
 
   handleClick() {
-    this.props.onUserInput([], this.props.video);
+    this.props.onUserInput(this.props.video);
   }
 
 }

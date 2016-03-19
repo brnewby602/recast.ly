@@ -8,12 +8,18 @@ class VideoList extends React.Component {
     return (
       <div className="video-list media">
         {
-          this.props.videoList.map( (video) => ( <VideoListEntry video={video} onUserInput={this.props.onUserInput}/> ))
+          this.props.videoList.map( (video) => ( <VideoListEntry video={video} onUserInput={this.handleUserInput.bind(this)}/> ))
         }  
       </div>    
     );
   }
+
+  handleUserInput(currentVideo) {
+    this.props.onUserInput(this.props.videoList, currentVideo);
+  }
 }
+
+
 
 // makes class definition available globally, not an instance
 window.VideoList = VideoList;
