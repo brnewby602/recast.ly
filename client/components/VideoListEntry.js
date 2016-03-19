@@ -13,7 +13,7 @@ class VideoListEntry extends React.Component {
         
         </div>
         <div className="media-body">
-          <div className="video-list-entry-title">{this.props.video.snippet.title}</div>
+          <div className="video-list-entry-title" onClick={this.handleClick.bind(this)}>{this.props.video.snippet.title}</div>
           <div className="video-list-entry-detail">{this.props.video.snippet.description}</div>
         </div>
       </div>
@@ -21,9 +21,10 @@ class VideoListEntry extends React.Component {
     
   }
 
+  handleClick() {
+    this.props.onUserInput([], this.props.video);
+  }
+
 }
 
 window.VideoListEntry = VideoListEntry;
-
-
-//   <img className="media-object" src="//i.ytimg.com/vi/dQw4w9WgXcQ/default.jpg" alt="" />

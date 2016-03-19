@@ -1,4 +1,5 @@
 class VideoPlayer extends React.Component {
+  
   constructor (props) {
     super(props);
   }

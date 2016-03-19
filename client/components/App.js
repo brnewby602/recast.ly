@@ -2,11 +2,10 @@ class App extends React.Component {
 
   constructor(props) {
     super(props); 
-  }
 
-  getInitialState() {
-    return {
-      video: this.props.videoList[0]
+    this.state = {
+      currentVideo: this.props.videoList[0],
+      videos: this.props.videoList
     };
   }
 
@@ -15,12 +14,22 @@ class App extends React.Component {
       <div>
         <Nav />
         <div className="col-md-7">
-          <VideoPlayer video={this.props.videoList[0]}/>
+          <VideoPlayer video={this.state.currentVideo}/>
         </div>
         <div className="col-md-5">
-          <VideoList videoList={this.props.videoList}/>
+          <VideoList videoList={this.state.videos} onUserInput={this.handleUserInput.bind(this)}/>
         </div>
       </div>
+    );
+  }
+
+  handleUserInput(videoList, currentVideo) {
+
+    this.setState(
+      {
+        currentVideo: currentVideo,
+        videos: videoList
+      }
     );
   }
 
