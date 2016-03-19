@@ -12,7 +12,7 @@ class App extends React.Component {
           <VideoPlayer/>
         </div>
         <div className="col-md-5">
-          <VideoList list={this.props.videoData}/>
+          <VideoList videoList={this.props.videoList}/>
         </div>
       </div>
     );
@@ -20,4 +20,4 @@ class App extends React.Component {
 
 }
 
-ReactDOM.render(<App videoData={window.exampleVideoData}/>, document.getElementById('app'));
+ReactDOM.render(<App videoList={window.exampleVideoData}/>, document.getElementById('app'));

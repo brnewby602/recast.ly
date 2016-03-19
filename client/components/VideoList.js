@@ -1,15 +1,19 @@
-var VideoList = () => (
-  <div className="video-list media">
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-  </div>
-);
+class VideoList extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="video-list media">
+        {
+          this.props.videoList.map( (video) => ( <VideoListEntry /> ))
+        }  
+      </div>    
+    );
+  }
+}
+
+// makes class definition available globally, not an instance
 window.VideoList = VideoList;
