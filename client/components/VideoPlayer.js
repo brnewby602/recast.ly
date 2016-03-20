@@ -5,7 +5,8 @@ class VideoPlayer extends React.Component {
   }
 
   render () {
-    return (
+    var elem = !this.props.video ? <div>Loading</div> :
+     (
       <div className="video-player">
         <div className="embed-responsive embed-responsive-16by9">
           <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${this.props.video.id.videoId}?autoplay=1`} allowFullScreen></iframe>
@@ -16,6 +17,10 @@ class VideoPlayer extends React.Component {
         </div>
       </div>  
     );
+    
+    debugger;
+
+    return elem;
   }
 }
 

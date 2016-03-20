@@ -5,13 +5,16 @@ class VideoList extends React.Component {
   }
 
   render() {
-    return (
+    var elem = !this.props.videoList ? <div>Loading</div> :
+    (
       <div className="video-list media">
         {
           this.props.videoList.map( (video) => ( <VideoListEntry video={video} onUserInput={this.handleUserInput.bind(this)}/> ))
         }  
       </div>    
     );
+
+    return elem;
   }
 
   handleUserInput(currentVideo) {

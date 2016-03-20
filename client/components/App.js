@@ -4,27 +4,31 @@ class App extends React.Component {
     super(props); 
 
     this.state = {
-      currentVideo: this.props.videoList[0],
-      videos: this.props.videoList
+      currentVideo: null,
+      videos: null
 
     };
 
-    searchYouTube('', function() {} );
   }
-/*
-  compondentDidMount() {
-    searchYouTube(options, function (result) {
-      this.setState({
-        currentVideo: this.videoList[0],
-        videos: this.videoList
-      });
-    });
+
+  componentDidMount() {
+    console.log("INSIDE MOUNT");
+    searchYouTube('', function (videos) {
+      debugger;
+      console.log("IM HERE");
+      this.setState(
+        {
+          currentVideo: videos.items[0],
+          videos: videos.items
+        }
+      );
+    }.bind(this));
   }
-  */
+
 
   render() {
-    var elem = !this.props ? <div>Loading</div> :
-      ( <div>
+    console.log("Inside App render");
+    return ( <div>
         <Nav />
         <div className="col-md-7">
           <VideoPlayer video={this.state.currentVideo}/>
@@ -33,10 +37,6 @@ class App extends React.Component {
           <VideoList videoList={this.state.videos} onUserInput={this.handleUserInput.bind(this)}/>
         </div>
       </div> );
-
-    return elem;
-    
-
 
   }
 

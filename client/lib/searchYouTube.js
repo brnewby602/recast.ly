@@ -19,24 +19,20 @@ Only GET embeddable videos
 
 var searchYouTube = (options, callback) => {
 
+  var cb = callback;
+
   $.ajax({
     url: 'https://www.googleapis.com/youtube/v3/search',
     type: 'GET',
-    data: { q: 'cute cats', part: 'snippet', maxResults: 8, key: YOUTUBE_API_KEY},
-    success: onSuccess,
-    error: onError
+    data: { q: 'cute cats', part: 'snippet', maxResults: 8, type: 'video', videoEmbeddable: 'true', key: YOUTUBE_API_KEY},
+    success: function(videos) {
+      console.log('IN ONSUCCESS');
+      cb(videos);
+    },
+    error: function(data) {
+      console.log('IN ONERROR');
+    }
   });
-};
-
-var onSuccess = function(data) {
-  console.log('IN ONSUCCESS');
-
-  this.callback(data);
-
-};
-
-var onError = function(data) {
-  console.log('IN ONERROR');
 };
 
 window.searchYouTube = searchYouTube;
