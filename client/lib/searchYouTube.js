@@ -24,7 +24,7 @@ var searchYouTube = (options, callback) => {
   $.ajax({
     url: 'https://www.googleapis.com/youtube/v3/search',
     type: 'GET',
-    data: { q: 'cute cats', part: 'snippet', maxResults: 8, type: 'video', videoEmbeddable: 'true', key: YOUTUBE_API_KEY},
+    data: { q: options.q, part: 'snippet', maxResults: 8, type: 'video', videoEmbeddable: 'true', key: YOUTUBE_API_KEY},
     success: function(videos) {
       console.log('IN ONSUCCESS');
       cb(videos);

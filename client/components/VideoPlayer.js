@@ -18,8 +18,6 @@ class VideoPlayer extends React.Component {
       </div>  
     );
     
-    debugger;
-
     return elem;
   }
 }

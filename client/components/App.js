@@ -12,24 +12,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log("INSIDE MOUNT");
-    searchYouTube('', function (videos) {
-      debugger;
-      console.log("IM HERE");
-      this.setState(
-        {
-          currentVideo: videos.items[0],
-          videos: videos.items
-        }
-      );
-    }.bind(this));
+
+    
+    this.searchYouTubeForVideos('cute cats');
+
   }
 
 
   render() {
-    console.log("Inside App render");
+
     return ( <div>
-        <Nav />
+        <Nav handleSearchClickEvent={this.handleSearchClickEvent.bind(this)}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.currentVideo}/>
         </div>
@@ -48,6 +41,27 @@ class App extends React.Component {
         videos: videoList
       }
     );
+  }
+
+  handleSearchClickEvent(searchString) {
+
+    this.searchYouTubeForVideos(searchString);
+
+  }
+
+  searchYouTubeForVideos(searchString) {
+    
+    var options = { q: searchString };
+    searchYouTube(options, function (videos) {
+      
+      this.setState(
+        {
+          currentVideo: videos.items[0],
+          videos: videos.items
+        }
+      );
+      
+    }.bind(this));
   }
 
 }
