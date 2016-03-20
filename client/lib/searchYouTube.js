@@ -22,17 +22,17 @@ var searchYouTube = (options, callback) => {
   $.ajax({
     url: 'https://www.googleapis.com/youtube/v3/search',
     type: 'GET',
-    data: { q: 'cute cats', parts: 'snippet', maxResults: 8},
+    data: { q: 'cute cats', part: 'snippet', maxResults: 8, key: YOUTUBE_API_KEY},
     success: onSuccess,
     error: onError
-  
   });
 };
 
 var onSuccess = function(data) {
   console.log('IN ONSUCCESS');
 
-  // call the callback function
+  this.callback(data);
+
 };
 
 var onError = function(data) {
